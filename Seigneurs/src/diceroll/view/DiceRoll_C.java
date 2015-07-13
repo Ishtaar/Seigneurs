@@ -25,7 +25,6 @@ import javafx.util.Duration;
 
 public class DiceRoll_C
 {
-//	public Dice dice;
 	public Dice dice;
 	public StackPane[] tab_dice; // Keep track of generated dices
 	
