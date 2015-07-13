@@ -1,12 +1,5 @@
 package server;
 
-/*
- * Créer l'interface DiceRollInterface
- * Créer la classe DiceRollImpl
- * Créer un skeleton "diceroll"
- * (re)Bind "diceroll" au registre
- */
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
