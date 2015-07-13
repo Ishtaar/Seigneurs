@@ -1,0 +1,122 @@
+/* Background 935x150 */
+.background
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+    -fx-background-image: url('/diceroll/view/ressources/Seigneurs/Background_launcher.png');
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* Color picker 150x25 */
+.background_box_couleur
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Background_box_couleur.png');
+    -fx-background-position: center center;
+}
+
+.background_box_couleur:hover
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Background_box_couleur.png');
+    -fx-background-position: center center;
+}
+
+/* Dice chooser 150x25 */
+.background_box_de
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Background_de.png');
+    -fx-background-position: center center;
+}
+
+.background_box_de:hover
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Background_de.png');
+    -fx-background-position: center center;
+}
+
+/* Launch button 60x25 */
+.background_launch
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Background_launch.png');
+    -fx-background-position: center center;
+}
+
+.background_launch:hover
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Background_launch.png');
+    -fx-background-position: center center;
+}
+
+/* Clear button 60x25 */
+.background_clear
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Background_clear.png');
+    -fx-background-position: center center;
+}
+
+.background_clear:hover
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Background_clear.png');
+    -fx-background-position: center center;
+}
+
+/* Menu button 25x25 */
+.menu
+{
+	
+}
+
+.menu:hover
+{
+	
+}
+
+/* Reduce button 25x25 */
+.reduce
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Reduce.png');
+    -fx-background-position: center center;
+}
+
+.reduce:hover
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Reduce.png');
+    -fx-background-position: center center;
+}
+
+/* Close button 25x25 */
+.close
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Close.png');
+    -fx-background-position: center center;
+}
+
+.close:hover
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/diceroll/view/ressources/Seigneurs/Close.png');
+    -fx-background-position: center center;
+}

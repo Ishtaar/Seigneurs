@@ -1,0 +1,39 @@
+.background
+{
+	-fx-border-insets: 10;
+  	-fx-background-insets: 10;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(Gaussian, rgba(100, 100, 100, 0.8), 10, 0, 0, 3);
+}
+
+.reduce
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/server/view/ressources/JavaFX/Reduce.png');
+    -fx-background-position: center center;
+}
+
+.reduce:hover
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/server/view/ressources/JavaFX/Reduce_hover.png');
+    -fx-background-position: center center;
+}
+
+.close
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/server/view/ressources/JavaFX/Close.png');
+    -fx-background-position: center center;
+}
+
+.close:hover
+{
+	-fx-border-style: null;
+    -fx-background-color: transparent;
+	-fx-background-image: url('/server/view/ressources/JavaFX/Close_hover.png');
+    -fx-background-position: center center;
+}
