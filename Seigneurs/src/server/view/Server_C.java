@@ -1,5 +1,10 @@
 package server.view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -14,7 +19,7 @@ public class Server_C
 	private double yOffset;
 	
 	@FXML
-    private AnchorPane pane;
+	private AnchorPane pane;
 	@FXML
 	private TextArea console;
 	
@@ -110,4 +115,14 @@ public class Server_C
             }
         });
     }
+    
+	public String getIP() throws IOException
+	{
+		URL whatismyip = new URL("http://checkip.amazonaws.com");
+		BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
+
+		String ip = in.readLine(); // Get IP as a String
+		
+		return ip;
+	}
 }
