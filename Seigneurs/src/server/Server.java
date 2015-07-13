@@ -1,8 +1,5 @@
 package server;
 
-import java.io.InputStream;
-import java.net.ServerSocket;
-import java.util.Properties;
 import server.view.Server_C;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +13,6 @@ public class Server extends Application
 {
 	private AnchorPane root;
 	Server_C controller;
-
-	private Properties properties = new Properties();
-	private String properties_file = "server.properties"; // Fichier Permettant d'éditer l'IP et le Port du serveur
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception
@@ -40,26 +34,7 @@ public class Server extends Application
 		
 		primaryStage.show();
 		
-		// Récupération des informations du fichier properties
-		InputStream input = Server.class.getResourceAsStream(properties_file);
-		properties.load(input);
-		
-		String port = properties.getProperty("Port");
-		String ip;
-		if(properties.getProperty("IP").equalsIgnoreCase("*")) // Récupération automatique de l'adresse IP
-		{
-			ip = controller.getIP();
-		}
-		else
-		{
-			ip = properties.getProperty("IP");
-		}
-		
-		controller.setConsole("IP : "+ip+"\n"+"Port : "+port);
-		
-		ServerSocket diceSS = new ServerSocket(Integer.parseInt(port)); // Ouverture d'un socket serveur sur "port"
-		
-		new DiceRollServerThread(diceSS);
+		new DiceRollServerThread(this);
 	}
 
 	public static void main(String[] args)

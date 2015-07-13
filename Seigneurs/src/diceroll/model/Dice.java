@@ -1,7 +1,5 @@
 package diceroll.model;
 
-import java.io.Serializable;
-
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -13,10 +11,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
 
-public class Dice extends StackPane implements Serializable
+@SuppressWarnings("unused")
+public class Dice extends StackPane
 {
-	private Color color;
-	private String value;
+	private Color _color;
+	private String _value;
 	
 	private Polygon hexagon;
 	private Text text; /* Text(double x, double y, String text) */
@@ -26,10 +25,10 @@ public class Dice extends StackPane implements Serializable
 		
 	}
 	
-	public Dice(Color color, String value)
+	public Dice(String color, String value)
 	{
-		this.color = color;
-		this.value = value;
+		_color = Color.web(color);
+		_value = value;
 		
 		this.setScaleY(0.65); // Bricolage pour faire correspondre la hauteur du dé à celle de la grille
 		this.setScaleX(0.65); // Conservation du ratio X/Y
@@ -46,17 +45,17 @@ public class Dice extends StackPane implements Serializable
 			-50.0, -30.0
 		});
 		
-		hexagon.setFill(color);
+		hexagon.setFill(_color);
 		hexagon.setStrokeWidth(4);
 		hexagon.setSmooth(true);
 		
-		text = new Text (value);
+		text = new Text (_value);
 		
 		text.setFont(new Font("Impact",35)); /* Nom de la police, Taille de la police */
 		text.setBoundsType(TextBoundsType.VISUAL);
 		text.setSmooth(true);
 		
-		if(color.equals(Color.BLACK)) /* Case dice is black */
+		if(_color.equals(Color.BLACK)) /* Case dice is black */
 		{
 			hexagon.setStroke(Color.WHITE); /* Couleur de la bordure */
 			text.setFill(Color.WHITE); /* Couleur du numéro */
@@ -80,7 +79,7 @@ public class Dice extends StackPane implements Serializable
 
 	public Color getColor()
 	{
-		return color;
+		return _color;
 	}
 
 	public Text getText()
@@ -90,6 +89,6 @@ public class Dice extends StackPane implements Serializable
 
 	public String getValue()
 	{
-		return value;
+		return _value;
 	}
 }

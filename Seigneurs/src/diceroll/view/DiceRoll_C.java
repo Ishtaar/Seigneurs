@@ -1,7 +1,10 @@
 package diceroll.view;
 
+import java.util.EnumMap;
 import java.util.Random;
 
+import diceroll.Arguments.ARGS;
+import diceroll.DiceRollThread;
 import diceroll.model.Dice;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -26,10 +29,14 @@ import javafx.util.Duration;
 public class DiceRoll_C
 {
 	public Dice dice;
-	public StackPane[] tab_dice; // Keep track of generated dices
+	public StackPane[] tab_dice; // Tableau contenant les dés générés
+	
+	public DiceRollThread diceRollThread;
+	
+	EnumMap<ARGS,String> arguments; // Obligé de passer par une MAP car les nodes JavaFX ne sont pas Serializable
 	
 	private double xOffset;
-	private double yOffset;
+	private double yOffset;	
 	
     @FXML
     private ColorPicker box_couleur;
@@ -41,7 +48,7 @@ public class DiceRoll_C
     private Slider slider;
     @FXML
     private AnchorPane pane;
-    @FXML
+	@FXML
     private GridPane gridpane;
     
     public DiceRoll_C ()
@@ -56,6 +63,8 @@ public class DiceRoll_C
     @FXML
     private void initialize()
     {
+    	arguments = new EnumMap<ARGS, String>(ARGS.class);
+    	
     	box_de.getItems().addAll(
     		"20",
     		"100");
@@ -74,12 +83,13 @@ public class DiceRoll_C
     {
     	if(box_de.getValue() != null)
 		{
-    		/*
-    		 * Generating dice
-    		 */
-    		dice = new Dice(box_couleur.getValue(),randInt(1,Integer.parseInt(box_de.getValue())));
+    		// Génération du dé
+    		arguments.put(ARGS.Couleur, box_couleur.getValue().toString());
+    		arguments.put(ARGS.Valeur, randInt(1,Integer.parseInt(box_de.getValue())));
     			
-    		addDice(dice);
+//    		addDice(arguments);
+//    		System.out.println(arguments);
+    		diceRollThread.send(arguments);
     		
     		/**
     		 * Disable launch button and set timer for x seconds to re-enable it.
@@ -101,9 +111,11 @@ public class DiceRoll_C
 		}
     }
     
-	public void addDice(Dice dice)
+	public void addDice(EnumMap<ARGS,String> arguments)
 	{
-		this.dice = dice;
+		this.arguments = arguments;
+		
+		dice = new Dice(this.arguments.get(ARGS.Couleur),this.arguments.get(ARGS.Valeur));
 		
 		/*
 		 * Checking if grid is empty
@@ -246,4 +258,9 @@ public class DiceRoll_C
 
         return ""+randomNum;
     }
+
+	public void setDiceRollThread(DiceRollThread diceRollThread)
+	{
+		this.diceRollThread = diceRollThread;
+	}
 } 

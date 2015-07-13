@@ -3,6 +3,7 @@ package diceroll;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import diceroll.view.DiceRoll_C;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +15,9 @@ import javafx.stage.StageStyle;
 public class DiceRoll extends Application
 {
 	private Stage primaryStage;
-    private AnchorPane root; 
+    private AnchorPane root;
+    private DiceRoll_C controller;
+    private DiceRollThread diceRollThread;
     
 	@Override
 	public void start(Stage primaryStage)
@@ -26,6 +29,7 @@ public class DiceRoll extends Application
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(DiceRoll.class.getResource("/diceroll/view/DiceRoll_V.fxml"));
 			root = (AnchorPane) loader.load();
+			controller = (DiceRoll_C) loader.getController();
 			
 			primaryStage.setTitle("Lanceur de dés - Seigneurs");
 			primaryStage.getIcons().add(new Image("/diceroll/view/ressources/Seigneurs.png"));
@@ -38,6 +42,8 @@ public class DiceRoll extends Application
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			
 			primaryStage.show();
+			
+			diceRollThread = new DiceRollThread(controller);
 		}
 		
 		catch(Exception e)
@@ -47,13 +53,23 @@ public class DiceRoll extends Application
 		}
 	}
 	
-	public static void main(String[] args)
+	public DiceRoll_C getController()
 	{
-		launch(args);
+		return controller;
 	}
 
 	public Stage getPrimaryStage()
 	{
 		return primaryStage;
+	}
+	
+	public DiceRollThread getDiceRollThread()
+	{
+		return diceRollThread;
+	}
+	
+	public static void main(String[] args)
+	{
+		launch(args);
 	}
 }

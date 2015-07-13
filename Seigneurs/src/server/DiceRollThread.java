@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.EnumMap;
 
-import diceroll.model.Dice;
+import diceroll.Arguments.ARGS;
 
 public class DiceRollThread implements Runnable
 {
@@ -15,12 +16,14 @@ public class DiceRollThread implements Runnable
 	private ObjectInputStream in; // Pour gestion du flux d'entrée
 	private DiceRollServerThread _serverThread; // Pour utilisation des méthodes de la classe principale
 	private int numClient=0; // Contiendra le numéro de client géré par ce thread
-	private Server server;
+	private Server _server;
+	private EnumMap<ARGS,String> _arguments;
 	
-	DiceRollThread(Socket s, DiceRollServerThread serverThread)
+	DiceRollThread(Socket s, DiceRollServerThread serverThread, Server server)
 	{
 		_s = s;
 		_serverThread = serverThread;
+		_server = server;
 		
 		try
 		{
@@ -42,11 +45,16 @@ public class DiceRollThread implements Runnable
 	{
 		try
 		{
-			Dice dice = (Dice) in.readObject(); // Déclaration de la variable qui recevra les dés
-			
-			if(dice != null)
+			while(_s.getInputStream().read() != -1) // Vérification so la connexion est toujours établie
 			{
-				_serverThread.sendAll(dice);
+				System.out.println("Ca rentre");
+				_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les dés
+				
+				if(_arguments != null)
+				{
+					System.out.println(_arguments);
+					_serverThread.sendAll(_arguments);
+				}
 			}
 		}
 		catch (ClassNotFoundException e)
@@ -62,7 +70,7 @@ public class DiceRollThread implements Runnable
 			try
 			{
 				// On indique à la console la deconnexion du client
-				server.getController().setConsole("Déconnexion du client n°"+numClient);
+				_server.getController().setConsole("Déconnexion du client n°"+numClient);
 				_serverThread.delClient(numClient); // On supprime le client de la liste
 				_s.close(); // Fermeture du socket si il ne l'a pas déjà été (à cause de l'exception levée plus haut)
 			}
@@ -71,5 +79,5 @@ public class DiceRollThread implements Runnable
 				
 			}
 	    }
-	}	
+	}
 }
