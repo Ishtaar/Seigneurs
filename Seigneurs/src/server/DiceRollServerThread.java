@@ -58,7 +58,7 @@ public class DiceRollServerThread implements Runnable
 		{
 			try
 			{
-				new DiceRollThread(diceSS.accept(), this, _server);
+				new DiceRollThread(diceSS.accept(), this);
 			}
 			catch (IOException e)
 			{
@@ -96,5 +96,10 @@ public class DiceRollServerThread implements Runnable
 		tabClients.addElement(out); // On ajoute le nouveau flux de sortie au tableau
 		System.out.println("addClient");	
 		return tabClients.size()-1; // On retourne le numéro du client ajouté (size-1)
+	}
+	
+	public Server get_server()
+	{
+		return _server;
 	}
 }

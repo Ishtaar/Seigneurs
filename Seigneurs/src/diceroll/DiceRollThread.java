@@ -24,9 +24,9 @@ public class DiceRollThread implements Runnable
 	private Properties properties = new Properties();
 	private String properties_file = "client.properties"; // Fichier Permettant d'éditer l'IP et le Port pour la connexion au serveur
 	
-	DiceRollThread(DiceRoll_C controller) throws IOException
+	DiceRollThread(DiceRoll diceroll) throws IOException
 	{	
-		_controller = controller;
+		_controller = diceroll.getController();
 		_controller.setDiceRollThread(this);
 		
 		// Récupération des informations du fichier properties
@@ -44,7 +44,7 @@ public class DiceRollThread implements Runnable
 		}
 		catch (IOException e)
 		{
-			
+			e.printStackTrace();
 		}
 		
 		t = new Thread();
@@ -56,7 +56,7 @@ public class DiceRollThread implements Runnable
 	{
 		try
 		{
-			_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les dés
+			_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les arguments pour créer le dé
 			
 			if(_arguments != null)
 			{
@@ -82,6 +82,11 @@ public class DiceRollThread implements Runnable
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void test()
+	{
+		System.out.println("TEST");
 	}
 	
 	public void send(EnumMap<ARGS,String> arguments)

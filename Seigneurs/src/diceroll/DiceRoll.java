@@ -17,7 +17,6 @@ public class DiceRoll extends Application
 	private Stage primaryStage;
     private AnchorPane root;
     private DiceRoll_C controller;
-    private DiceRollThread diceRollThread;
     
 	@Override
 	public void start(Stage primaryStage)
@@ -43,7 +42,7 @@ public class DiceRoll extends Application
 			
 			primaryStage.show();
 			
-			diceRollThread = new DiceRollThread(controller);
+			new DiceRollThread(this);
 		}
 		
 		catch(Exception e)
@@ -61,11 +60,6 @@ public class DiceRoll extends Application
 	public Stage getPrimaryStage()
 	{
 		return primaryStage;
-	}
-	
-	public DiceRollThread getDiceRollThread()
-	{
-		return diceRollThread;
 	}
 	
 	public static void main(String[] args)

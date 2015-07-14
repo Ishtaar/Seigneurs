@@ -19,11 +19,11 @@ public class DiceRollThread implements Runnable
 	private Server _server;
 	private EnumMap<ARGS,String> _arguments;
 	
-	DiceRollThread(Socket s, DiceRollServerThread serverThread, Server server)
+	DiceRollThread(Socket s, DiceRollServerThread serverThread)
 	{
 		_s = s;
 		_serverThread = serverThread;
-		_server = server;
+		_server = _serverThread.get_server();
 		
 		try
 		{
@@ -47,8 +47,8 @@ public class DiceRollThread implements Runnable
 		{
 			while(_s.getInputStream().read() != -1) // Vérification si la connexion est toujours établie
 			{
-				System.out.println("Ca rentre");
-				_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les dés
+				System.out.println("Reçu: "+in.readObject());
+				_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les arguments pour créer le dé
 				
 				if(_arguments != null)
 				{
