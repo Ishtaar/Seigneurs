@@ -84,11 +84,6 @@ public class DiceRollThread implements Runnable
 		}
 	}
 	
-	public void test()
-	{
-		System.out.println("TEST");
-	}
-	
 	public void send(EnumMap<ARGS,String> arguments)
 	{
 		try
