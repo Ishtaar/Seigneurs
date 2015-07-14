@@ -30,6 +30,7 @@ public class DiceRollThread implements Runnable
 			out = new ObjectOutputStream(_s.getOutputStream());
 			in = new ObjectInputStream(_s.getInputStream());
 			numClient = _serverThread.addClient(out);
+			_server.getController().setConsole("Connexion du client n°"+numClient);
 		}
 		catch (IOException e)
 		{
@@ -47,7 +48,6 @@ public class DiceRollThread implements Runnable
 		{
 			while(_s.getInputStream().read() != -1) // Vérification si la connexion est toujours établie
 			{
-				System.out.println("Reçu: "+in.readObject());
 				_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les arguments pour créer le dé
 				
 				if(_arguments != null)
