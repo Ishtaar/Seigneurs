@@ -45,7 +45,7 @@ public class DiceRollThread implements Runnable
 	{
 		try
 		{
-			while(_s.getInputStream().read() != -1) // Vérification so la connexion est toujours établie
+			while(_s.getInputStream().read() != -1) // Vérification si la connexion est toujours établie
 			{
 				System.out.println("Ca rentre");
 				_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les dés
