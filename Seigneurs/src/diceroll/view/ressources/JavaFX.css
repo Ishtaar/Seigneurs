@@ -3,20 +3,20 @@
 {
 	-fx-border-insets: 10;
   	-fx-background-insets: 10;
-    -fx-background-radius: 5;
-    -fx-effect: dropshadow(Gaussian, rgba(100, 100, 100, 0.8), 10, 0, 0, 3);
-    
-    -dark: rgb(47.0, 52.0, 57.0);
-    -blue: #4682B4;
-    -hover: #00BFFF;
-    -press: #87CEFA;
-    
-    -fx-background-color: -dark;
-    
-    /*default font */
-    -fx-text-base-color: white;
-    -fx-font-family: 'Helvetica Neue';
-    -fx-font-weight: bold;
+	-fx-background-radius: 5;
+	-fx-effect: dropshadow(Gaussian, rgba(100, 100, 100, 0.8), 10, 0, 0, 3);
+	
+	-dark: rgb(47.0, 52.0, 57.0);
+	-blue: #4682B4;
+	-hover: #00BFFF;
+	-press: #87CEFA;
+	
+	-fx-background-color: -dark;
+	
+	/*default font */
+	-fx-text-base-color: white;
+	-fx-font-family: 'Helvetica Neue';
+	-fx-font-weight: bold;
 }
 
 /* Color picker 150x25 */
@@ -53,8 +53,8 @@
 
 .combo-box-popup > .list-view
 {
-    -fx-pref-height: 52;
-    -fx-background-color: -blue;
+	-fx-pref-height: 52;
+	-fx-background-color: -blue;
 }
 
 /* Combobox dice 150x25 */
@@ -132,16 +132,16 @@
 .top
 {
 	-fx-border-style: null;
-    -fx-background-color: -blue;
+	-fx-background-color: -blue;
 	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Top.png');
 	-fx-background-size: 25px 25px;
-    -fx-background-position: center center;
+	-fx-background-position: center center;
 }
 
 .top:hover
 {
-    -fx-background-color: -hover;
-    -fx-background-position: center center;
+	-fx-background-color: -hover;
+	-fx-background-position: center center;
 }
 
 .top:focused
@@ -163,16 +163,15 @@
 .reduce
 {
 	-fx-border-style: null;
-    /*-fx-background-color: transparent;*/
-    -fx-background-color: -blue;
+	-fx-background-color: -blue;
 	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Reduce.png');
-    -fx-background-position: center center;
+	-fx-background-position: center center;
 }
 
 .reduce:hover
 {
-    -fx-background-color: -hover;
-    -fx-background-position: center center;
+	-fx-background-color: -hover;
+	-fx-background-position: center center;
 }
 
 .reduce:focused
@@ -189,16 +188,15 @@
 .close
 {
 	-fx-border-style: null;
-    /*-fx-background-color: transparent;*/
-    -fx-background-color: -blue;
+	-fx-background-color: -blue;
 	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Close.png');
-    -fx-background-position: center center;
+	-fx-background-position: center center;
 }
 
 .close:hover
 {
-    -fx-background-color: -hover;
-    -fx-background-position: center center;
+	-fx-background-color: -hover;
+	-fx-background-position: center center;
 }
 
 .close:focused
