@@ -141,7 +141,6 @@
 .top:hover
 {
 	-fx-background-color: -hover;
-	-fx-background-position: center center;
 }
 
 .top:focused
@@ -171,7 +170,6 @@
 .reduce:hover
 {
 	-fx-background-color: -hover;
-	-fx-background-position: center center;
 }
 
 .reduce:focused
@@ -196,7 +194,6 @@
 .close:hover
 {
 	-fx-background-color: -hover;
-	-fx-background-position: center center;
 }
 
 .close:focused

@@ -2,38 +2,124 @@
 {
 	-fx-border-insets: 10;
   	-fx-background-insets: 10;
-    -fx-background-radius: 5;
-    -fx-effect: dropshadow(Gaussian, rgba(100, 100, 100, 0.8), 10, 0, 0, 3);
+	-fx-background-radius: 5;
+	-fx-effect: dropshadow(Gaussian, rgba(100, 100, 100, 0.8), 10, 0, 0, 3);
+	
+	-dark: rgb(47.0, 52.0, 57.0);
+	-blue: #4682B4;
+	-hover: #00BFFF;
+	-press: #87CEFA;
+	
+	-fx-background-color: -dark;
 }
 
+.label
+{
+	-fx-font-weight: bold;
+}
+
+.text-area
+{
+	-fx-background-color: white;
+	-fx-background-radius: 2.0;
+	-fx-padding: 0.5em;
+	-fx-border-width: 0.0;
+	-fx-prompt-text-fill: derive(-dark, 50.0%);
+	-fx-highlight-fill: -press;
+}
+
+.text-area .text
+{
+	-fx-effect: null; 
+	-fx-fill: -dark;
+}
+
+.text-area
+{
+	-fx-padding: 0.15em;
+}
+
+.text-area .content
+{
+	-fx-border-width: 0.0;
+	-fx-background-color: transparent;
+}
+
+.scroll-bar:vertical > .track-background,
+.scroll-bar:horizontal > .track-background
+{
+	-fx-background-color: -press;
+}
+
+.scroll-bar:vertical > .thumb,
+.scroll-bar:horizontal > .thumb
+{
+	-fx-background-color: -blue;
+}
+
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button,
+.scroll-bar:hover > .increment-button,
+.scroll-bar:hover > .decrement-button
+{
+	-fx-background-color: transparent;
+}
+
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow
+{
+	-fx-background-color: white;
+}
+
+.scroll-bar > .track-background
+{
+	-fx-background-color: transparent;
+}
+
+/* Reduce button 25x25 */
 .reduce
 {
 	-fx-border-style: null;
-    -fx-background-color: transparent;
+	-fx-background-color: -blue;
 	-fx-background-image: url('/server/view/ressources/JavaFX/Reduce.png');
-    -fx-background-position: center center;
+	-fx-background-position: center center;
 }
 
 .reduce:hover
 {
-	-fx-border-style: null;
-    -fx-background-color: transparent;
-	-fx-background-image: url('/server/view/ressources/JavaFX/Reduce_hover.png');
-    -fx-background-position: center center;
+	-fx-background-color: -hover;
 }
 
+.reduce:focused
+{
+	-fx-background-insets: 0 0 -1 0;
+}
+
+.reduce:pressed
+{
+	-fx-background-color: -press;
+}
+
+/* Close button 25x25 */
 .close
 {
 	-fx-border-style: null;
-    -fx-background-color: transparent;
+	-fx-background-color: -blue;
 	-fx-background-image: url('/server/view/ressources/JavaFX/Close.png');
-    -fx-background-position: center center;
+	-fx-background-position: center center;
 }
 
 .close:hover
 {
-	-fx-border-style: null;
-    -fx-background-color: transparent;
-	-fx-background-image: url('/server/view/ressources/JavaFX/Close_hover.png');
-    -fx-background-position: center center;
+	-fx-background-color: -hover;
+}
+
+.close:focused
+{
+	-fx-background-insets: 0 0 -1 0;
+}
+
+.close:pressed
+{
+	-fx-background-color: -press;
 }

@@ -9,7 +9,7 @@
    <children>
       <TextArea fx:id="console" editable="false" layoutX="25.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="250.0" wrapText="true" />
       <Button layoutX="250.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="25.0" styleClass="close" />
-      <Button layoutX="225.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#reduce" prefHeight="25.0" prefWidth="25.0" styleClass="reduce" />
-      <Label layoutX="25.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="115.0" text="Seigneurs - Serveur" />
+      <Button layoutX="220.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#reduce" prefHeight="25.0" prefWidth="25.0" styleClass="reduce" />
+      <Label layoutX="25.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="115.0" text="Seigneurs - Serveur" textFill="WHITE" />
    </children>
 </AnchorPane>
