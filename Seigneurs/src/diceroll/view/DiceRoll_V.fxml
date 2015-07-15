@@ -54,8 +54,8 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
-      <Button layoutX="835.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#top" prefHeight="25.0" prefWidth="25.0" styleClass="top" />
       <Slider fx:id="slider" blockIncrement="0.05" layoutX="620.0" layoutY="20.0" max="1.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.2" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#opacity" onDragDone="#opacity" onDragDropped="#opacity" onDragEntered="#opacity" onDragExited="#opacity" prefHeight="25.0" prefWidth="100.0" value="1.0" />
+      <ToggleButton layoutX="835.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#top" prefHeight="25.0" prefWidth="25.0" styleClass="top" text="ToggleButton" />
    </children>
    <cursor>
       <Cursor fx:constant="DEFAULT" />

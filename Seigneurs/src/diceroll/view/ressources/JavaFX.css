@@ -5,99 +5,208 @@
   	-fx-background-insets: 10;
     -fx-background-radius: 5;
     -fx-effect: dropshadow(Gaussian, rgba(100, 100, 100, 0.8), 10, 0, 0, 3);
+    
+    -dark: rgb(47.0, 52.0, 57.0);
+    -blue: #4682B4;
+    -hover: #00BFFF;
+    -press: #87CEFA;
+    
+    -fx-background-color: -dark;
+    
+    /*default font */
+    -fx-text-base-color: white;
+    -fx-font-family: 'Helvetica Neue';
+    -fx-font-weight: bold;
 }
 
 /* Color picker 150x25 */
 .background_box_couleur
 {
-	
+	-fx-border-style: null;
+	-fx-background-color: -blue;
 }
 
 .background_box_couleur:hover
 {
-	
+	-fx-background-color: -hover;
 }
 
-/* Color picker 150x25 */
+.background_box_couleur:focused
+{
+	-fx-background-insets: 0 0 -1 0;
+}
+
+.background_box_couleur:pressed
+{
+	-fx-background-color: -press;
+}
+
+.background_box_couleur > .arrow-button > .arrow
+{
+	-fx-background-color: white;
+}
+
+.list-cell:hover
+{
+	-fx-background-color: -blue;
+}
+
+.combo-box-popup > .list-view
+{
+    -fx-pref-height: 52;
+    -fx-background-color: -blue;
+}
+
+/* Combobox dice 150x25 */
 .background_box_de
 {
-	
+	-fx-border-style: null;
+	-fx-background-color: -blue;
+}
+
+.background_box_de > .arrow-button > .arrow
+{
+	-fx-background-color: white;
 }
 
 .background_box_de:hover
 {
-	
+	-fx-background-color: -hover;
+}
+
+.background_box_de:focused
+{
+	-fx-background-insets: 0 0 -1 0;
+}
+
+.background_box_de:pressed
+{
+	-fx-background-color: -press;
 }
 
 /* Launch button 60x25 */
 .background_launch
 {
-	
+	-fx-border-style: null;
+	-fx-background-color: -blue;
 }
 
 .background_launch:hover
 {
-	
+	-fx-background-color: -hover;
+}
+
+.background_launch:focused
+{
+	-fx-background-insets: 0 0 -1 0;
+}
+
+.background_launch:pressed
+{
+	-fx-background-color: -press;
 }
 
 /* Clear button 60x25 */
 .background_clear
 {
-	
+	-fx-border-style: null;
+	-fx-background-color: -blue;
 }
 
 .background_clear:hover
 {
-	
+	-fx-background-color: -hover;
+}
+
+.background_clear:focused
+{
+	-fx-background-insets: 0 0 -1 0;
+}
+
+.background_clear:pressed
+{
+	-fx-background-color: -press;
 }
 
 /* Top button 60x25 */
 .top
 {
 	-fx-border-style: null;
-    -fx-background-color: transparent;
+    -fx-background-color: -blue;
 	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Top.png');
+	-fx-background-size: 25px 25px;
     -fx-background-position: center center;
 }
 
 .top:hover
 {
-	-fx-border-style: null;
-    -fx-background-color: transparent;
-	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Top_hover.png');
+    -fx-background-color: -hover;
     -fx-background-position: center center;
+}
+
+.top:focused
+{
+	-fx-background-insets: 0 0 -1 0;
+}
+
+.top:pressed
+{
+	-fx-background-color: -press;
+}
+
+.top:selected
+{
+	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Top_pinned.png');
 }
 
 /* Reduce button 25x25 */
 .reduce
 {
 	-fx-border-style: null;
-    -fx-background-color: transparent;
+    /*-fx-background-color: transparent;*/
+    -fx-background-color: -blue;
 	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Reduce.png');
     -fx-background-position: center center;
 }
 
 .reduce:hover
 {
-	-fx-border-style: null;
-    -fx-background-color: transparent;
-	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Reduce_hover.png');
+    -fx-background-color: -hover;
     -fx-background-position: center center;
+}
+
+.reduce:focused
+{
+	-fx-background-insets: 0 0 -1 0;
+}
+
+.reduce:pressed
+{
+	-fx-background-color: -press;
 }
 
 /* Close button 25x25 */
 .close
 {
 	-fx-border-style: null;
-    -fx-background-color: transparent;
+    /*-fx-background-color: transparent;*/
+    -fx-background-color: -blue;
 	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Close.png');
     -fx-background-position: center center;
 }
 
 .close:hover
 {
-	-fx-border-style: null;
-    -fx-background-color: transparent;
-	-fx-background-image: url('/diceroll/view/ressources/JavaFX/Close_hover.png');
+    -fx-background-color: -hover;
     -fx-background-position: center center;
+}
+
+.close:focused
+{
+	-fx-background-insets: 0 0 -1 0;
+}
+
+.close:pressed
+{
+	-fx-background-color: -press;
 }

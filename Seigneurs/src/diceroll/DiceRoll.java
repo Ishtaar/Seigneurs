@@ -39,9 +39,9 @@ public class DiceRoll extends Application
 			
 			diceRoll.setFill(null);
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
-			
+
 			primaryStage.show();
-			
+
 			new DiceRollThread(this);
 		}
 		
