@@ -112,6 +112,7 @@ public class Server_C
             public void run()
             {
                 stage.fireEvent(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
+                System.exit(0);
             }
         });
     }

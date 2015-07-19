@@ -2,7 +2,6 @@ package server;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.EnumMap;
@@ -16,16 +15,15 @@ public class DiceRollServerThread implements Runnable
 {
 	private Server _server;
 	private Server_C controller;
-	private Vector<ObjectOutputStream> tabClients = new Vector<ObjectOutputStream>(); // Contiendra tous les flux de sortie vers les clients
+	private Vector<DiceRollThread> tabClients = new Vector<DiceRollThread>(); // Contiendra tous les flux de sortie vers les clients
 	private Thread t;
-	private ServerSocket diceSS;
+	private ServerSocket listener;
 	private Properties properties = new Properties();
 	private String properties_file = "server.properties"; // Fichier Permettant d'éditer le port du serveur
 	
 	public DiceRollServerThread(Server server) throws IOException
 	{
 		_server = server;
-		
 		controller = _server.getController();
 		
 		// Récupération des informations du fichier properties
@@ -45,7 +43,7 @@ public class DiceRollServerThread implements Runnable
 		
 		controller.setConsole("IP : "+ip+"\n"+"Port : "+port);
 		
-		diceSS = new ServerSocket(Integer.parseInt(port), 0, InetAddress.getByName(null)); // Ouverture d'un socket serveur sur "port"
+		listener = new ServerSocket(Integer.parseInt(port), 0, InetAddress.getByName(null)); // Ouverture d'un socket serveur sur "port"
 
 		t = new Thread(this);
 		t.start();
@@ -58,7 +56,7 @@ public class DiceRollServerThread implements Runnable
 		{
 			try
 			{
-				new DiceRollThread(diceSS.accept(), this);
+				new DiceRollThread(listener.accept(), this);
 			}
 			catch (IOException e)
 			{
@@ -69,17 +67,10 @@ public class DiceRollServerThread implements Runnable
 	
 	synchronized public void sendAll(EnumMap<ARGS, String> arguments) throws IOException
 	{
-		ObjectOutputStream out;
-		
-		for (int i = 0; i < tabClients.size(); i++) // Parcours de la table des connectés
-	    {
-			out = (ObjectOutputStream) tabClients.elementAt(i); // Extraction de l'élément courant (type ObjectOutputStream)
-			if (out != null) // Sécurité, l'élément ne doit pas être vide
-			{
-				out.writeObject(arguments);
-				out.flush(); // Envoi dans le flux de sortie
-			}
-	    }
+		for(DiceRollThread client : tabClients)
+		{
+			client.send(arguments);
+		}
 	}
 	
 	synchronized public void delClient(int i)
@@ -91,9 +82,9 @@ public class DiceRollServerThread implements Runnable
 		}
 	}
 	
-	synchronized public int addClient(ObjectOutputStream out)
+	synchronized public int addClient(DiceRollThread client)
 	{
-		tabClients.addElement(out); // On ajoute le nouveau flux de sortie au tableau
+		tabClients.addElement(client); // On ajoute le nouveau flux de sortie au tableau
 		System.out.println("addClient");	
 		return tabClients.size()-1; // On retourne le numéro du client ajouté (size-1)
 	}

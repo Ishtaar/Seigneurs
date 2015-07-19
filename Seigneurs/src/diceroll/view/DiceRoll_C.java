@@ -84,12 +84,11 @@ public class DiceRoll_C
     	if(box_de.getValue() != null)
 		{
     		// Génération du dé
+    		arguments.clear();
     		arguments.put(ARGS.Couleur, box_couleur.getValue().toString());
     		arguments.put(ARGS.Valeur, randInt(1,Integer.parseInt(box_de.getValue())));
     			
-//    		addDice(arguments);
-//    		System.out.println(arguments);
-    		diceRollThread.send(arguments);
+    		diceRollThread.send(arguments); // Envoi des arguments au serveur
     		
     		/**
     		 * Disable launch button and set timer for x seconds to re-enable it.
@@ -212,6 +211,7 @@ public class DiceRoll_C
             public void run()
             {
                 stage.fireEvent(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
+                System.exit(0);
             }
         });
     }

@@ -9,6 +9,9 @@ import java.net.Socket;
 import java.util.EnumMap;
 import java.util.Properties;
 
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import diceroll.Arguments.ARGS;
 import diceroll.view.DiceRoll_C;
 
@@ -45,22 +48,32 @@ public class DiceRollThread implements Runnable
 		catch (IOException e)
 		{
 			e.printStackTrace();
+			
+			Alert alert = new Alert(AlertType.ERROR); // Affichage d'une fenêtre d'erreur dans le cas où la connexion échoue
+			alert.setTitle("Lanceur de dés - Seigneurs - Erreur");
+			alert.setHeaderText("La connexion au serveur a échouée.");
+			alert.setContentText("Vérifiez les paramètres de connexion.");
+
+			alert.showAndWait();
+			
+			System.exit(0);
 		}
 		
-		t = new Thread();
-		t.start();
+		t = new Thread(this);
+		t.start();Platform.setImplicitExit(false);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void run()
 	{
 		try
 		{
-			_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les arguments pour créer le dé
-			
-			if(_arguments != null)
+			while(true)
 			{
-				_controller.addDice(_arguments);
+				_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les arguments pour créer le dé
+				System.out.println("(Client)Recu: "+_arguments);
+				Platform.runLater(() ->_controller.addDice(_arguments)); // FX application thread
 			}
 		}
 		catch (ClassNotFoundException e)
@@ -88,8 +101,10 @@ public class DiceRollThread implements Runnable
 	{
 		try
 		{
+			System.out.println("(Client)Envoyé: "+arguments);
 			out.writeObject(arguments);
 			out.flush();
+			out.reset();
 		}
 		catch (IOException e)
 		{

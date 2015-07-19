@@ -1,5 +1,6 @@
 package server;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -29,7 +30,7 @@ public class DiceRollThread implements Runnable
 		{
 			out = new ObjectOutputStream(_s.getOutputStream());
 			in = new ObjectInputStream(_s.getInputStream());
-			numClient = _serverThread.addClient(out);
+			numClient = _serverThread.addClient(this);
 			_server.getController().setConsole("Connexion du client n°"+numClient);
 		}
 		catch (IOException e)
@@ -41,20 +42,17 @@ public class DiceRollThread implements Runnable
 		t.start();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void run()
 	{
 		try
 		{
-			while(_s.getInputStream().read() != -1) // Vérification si la connexion est toujours établie
+			while(true) // Vérification si la connexion est toujours établie
 			{
 				_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les arguments pour créer le dé
-				
-				if(_arguments != null)
-				{
-					System.out.println(_arguments);
-					_serverThread.sendAll(_arguments);
-				}
+				System.out.println("(Serveur)Recu: "+_arguments);
+				_serverThread.sendAll(_arguments);
 			}
 		}
 		catch (ClassNotFoundException e)
@@ -79,5 +77,20 @@ public class DiceRollThread implements Runnable
 				
 			}
 	    }
+	}
+	
+	public void send(EnumMap<ARGS,String> arguments)
+	{
+		try
+		{
+			System.out.println("(Serveur)Envoyé: "+arguments);
+			out.writeObject(arguments);
+			out.flush();
+			out.reset();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }
