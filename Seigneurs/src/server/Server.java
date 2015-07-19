@@ -1,9 +1,5 @@
 package server;
 
-/*
- * Ne pas oublier la fermeture des connexions à la fermeture du serveur
- */
-
 import server.view.Server_C;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
