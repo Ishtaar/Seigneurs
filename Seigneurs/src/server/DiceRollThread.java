@@ -1,6 +1,5 @@
 package server;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -51,7 +50,6 @@ public class DiceRollThread implements Runnable
 			while(true) // Vérification si la connexion est toujours établie
 			{
 				_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les arguments pour créer le dé
-				System.out.println("(Serveur)Recu: "+_arguments);
 				_serverThread.sendAll(_arguments);
 			}
 		}
@@ -83,7 +81,6 @@ public class DiceRollThread implements Runnable
 	{
 		try
 		{
-			System.out.println("(Serveur)Envoyé: "+arguments);
 			out.writeObject(arguments);
 			out.flush();
 			out.reset();

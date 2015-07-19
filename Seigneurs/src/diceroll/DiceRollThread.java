@@ -60,7 +60,7 @@ public class DiceRollThread implements Runnable
 		}
 		
 		t = new Thread(this);
-		t.start();Platform.setImplicitExit(false);
+		t.start();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -72,7 +72,6 @@ public class DiceRollThread implements Runnable
 			while(true)
 			{
 				_arguments = (EnumMap<ARGS, String>) in.readObject(); // Déclaration de la variable qui recevra les arguments pour créer le dé
-				System.out.println("(Client)Recu: "+_arguments);
 				Platform.runLater(() ->_controller.addDice(_arguments)); // FX application thread
 			}
 		}
@@ -101,7 +100,6 @@ public class DiceRollThread implements Runnable
 	{
 		try
 		{
-			System.out.println("(Client)Envoyé: "+arguments);
 			out.writeObject(arguments);
 			out.flush();
 			out.reset();

@@ -78,14 +78,12 @@ public class DiceRollServerThread implements Runnable
 		if (tabClients.elementAt(i) != null) // Si l'élément existe ...
 		{
 			tabClients.removeElementAt(i); // ... on le supprime
-			System.out.println("delClient");
 		}
 	}
 	
 	synchronized public int addClient(DiceRollThread client)
 	{
-		tabClients.addElement(client); // On ajoute le nouveau flux de sortie au tableau
-		System.out.println("addClient");	
+		tabClients.addElement(client); // On ajoute le nouveau flux de sortie au tableau	
 		return tabClients.size()-1; // On retourne le numéro du client ajouté (size-1)
 	}
 	
