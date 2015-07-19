@@ -43,7 +43,7 @@ public class DiceRollServerThread implements Runnable
 		
 		controller.setConsole("IP : "+ip+"\n"+"Port : "+port);
 		
-		listener = new ServerSocket(Integer.parseInt(port), 0, InetAddress.getByName(null)); // Ouverture d'un socket serveur sur "port"
+		listener = new ServerSocket(Integer.parseInt(port), 0, InetAddress.getLocalHost()); // Ouverture d'un socket serveur sur "port" et IP locale
 
 		t = new Thread(this);
 		t.start();
